@@ -97,29 +97,54 @@
     const mesh = new THREE.Points(geometry, material);
     scene.add(mesh);
 
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0.5, -2),
-      new THREE.Vector3(0, -0.7, -5),
-      new THREE.Vector3(0, -1, -6),
-      new THREE.Vector3(0, -1.4, -7),
-      new THREE.Vector3(0, -1.6, -8),
-      new THREE.Vector3(0, -1.7, -8.5),
-      new THREE.Vector3(0, -2, -12),
-      new THREE.Vector3(0, -2, -40)
-    ], false, 'centripetal', 50);
+    const body1Geometry = new THREE.CylinderGeometry(1, 1, 10, 32);
+    const body1Material = new THREE.MeshLambertMaterial({
+      emissive: 0x367f05,
+      wireframe: true
+    });
+    const body1Cylinder = new THREE.Mesh(body1Geometry, body1Material);
+    body1Cylinder.rotation.x = Math.PI / 2
+    body1Cylinder.position.z = -5
+    scene.add(body1Cylinder);
 
-    const points = curve.getPoints(100);
-    const curveGeometry = new THREE.BufferGeometry().setFromPoints(points);
+    const body2Geometry = new THREE.CylinderGeometry(1, 1, 10, 32);
+    const body2Material = new THREE.MeshLambertMaterial({
+      emissive: 0x367f05,
+      wireframe: true
+    });
+    const body2Cylinder = new THREE.Mesh(body2Geometry, body2Material);
+    body2Cylinder.rotation.x = Math.PI / 2.2
+    body2Cylinder.position.z = -13
+    body2Cylinder.position.y = -0.5
+    scene.add(body2Cylinder);
 
-    const curveMaterial = new THREE.LineBasicMaterial({ color: 0x0c5e00 });
+    const body3Geometry = new THREE.CylinderGeometry(1, 1, 10, 32);
+    const body3Material = new THREE.MeshLambertMaterial({
+      emissive: 0x367f05,
+      wireframe: true
+    });
+    const body3Cylinder = new THREE.Mesh(body3Geometry, body3Material);
+    body3Cylinder.rotation.x = Math.PI / 2.2
+    body3Cylinder.position.z = -20
+    body3Cylinder.position.y = -1.3
+    scene.add(body3Cylinder);
 
-    // Create the final object to add to the scene
-    const splineObject = new THREE.Line(curveGeometry, curveMaterial);
-    scene.add(splineObject)
+    const body4Geometry = new THREE.CylinderGeometry(1, 1, 10, 32);
+    const body4Material = new THREE.MeshLambertMaterial({
+      emissive: 0x367f05,
+      wireframe: true
+    });
+    const body4Cylinder = new THREE.Mesh(body4Geometry, body4Material);
+    body4Cylinder.rotation.x = Math.PI / 2.2
+    body4Cylinder.position.z = -28
+    body4Cylinder.position.y = -2.3
+    scene.add(body4Cylinder);
 
     const knotGeometry = new THREE.TorusKnotGeometry(6, 2.7, 300, 20, 1, 5);
-    const knotMaterial = new THREE.MeshNormalMaterial({ wireframe: true });
+    const knotMaterial = new THREE.MeshLambertMaterial({
+      emissive: 0xff7c7c,
+      wireframe: true
+    });
     const torusKnot = new THREE.Mesh(knotGeometry, knotMaterial);
     torusKnot.position.z = -15
     scene.add(torusKnot);
